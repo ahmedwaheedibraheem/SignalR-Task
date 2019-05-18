@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        div {
+            margin-bottom: 10px;
+        }
+
+        #div {
+            margin: 0;
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        name : <input type="text" id="txt_name" />
+
+
+    </div>
+    <div>
+        GroupName<input type="text" value="" id="txt_gName" />
+    </div>
+    <div>
+        Message : <input type="text" id="txt_message" />
+    </div>
+    <div>
+        <input type="button" value="Send" id="btn_send" />
+        <input type="button" value="join" id="btn_join" />
+        <input type="button" value="send group" id="btn_sendgroup" />
+    </div>
+    <div>
+        <ul id="mesgs"></ul>
+    </div>
+
+    <div id="div">
+
+    </div>
+
+    <script src="Scripts/jquery-1.12.4.js"></script>
+    <script src="Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="Scripts/jquery.signalR-2.4.1.js"></script>
+    <script src="/signalr/hubs"></script>
+    <script>
+        $(document).ready(() => {
+            // connect to hub
+            $.connection.hub.start();
+            //$.connection.hub.start({trasnport:'longPooling});
+            //getting the user id
+            //$.connection.chatHub.start().done(function () {
+            //    console.log(chatHub.connection.id);
+            //});
+
+            //object from chathub
+            let chatHub = $.connection.chatHub;
+
+            //recive message
+            chatHub.client.onMessage = (name, message) => {
+                //console.log(name, message);
+                $('#mesgs').append(`<li>${name} : ${message}</li>`);
+            }
+
+            //send message
+            $('#btn_send').click(() => {
+                let name = $('#txt_name').val();
+                let message = $('#txt_message').val();
+                chatHub.server.newMessage(name, message);
+            });
+
+            //make div dragable
+            $('#div').draggable({
+                //send position to server
+                drag: function (event, ui) {
+                    let top = $(this).css('top');
+                    let left = $(this).css('left');
+                    chatHub.server.newPosition();
+                }
+            });
+            // server call this function and excute it
+            chatHub.client.onMove = (top, left) => {
+                $('#div').css({
+                    'top': top,
+                    'left': left
+                });
+            };
+
+            $(`#btn_join`).click(() => {
+                let name = $(`#txt_name`).val();
+                let gName = $(`#txt_gName`).val();
+                chatHub.server.joinGroup(name, gName);
+            });
+            $(`#btn_sendgroup`).click(() => {
+                let name = $(`#txt_name`).val();
+                let gName = $(`#txt_gName`).val();
+                let message = $(`#txt_message`).val();
+                chatHub.server.sendGroup(name, gName, message);
+            });
+
+        });
+    </script>
+</body>
+</html>

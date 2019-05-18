@@ -1,0 +1,16 @@
+C:\Users\MINER\source\repos\signalR\client\bin\Debug\client.exe.config
+C:\Users\MINER\source\repos\signalR\client\bin\Debug\client.exe
+C:\Users\MINER\source\repos\signalR\client\bin\Debug\client.pdb
+C:\Users\MINER\source\repos\signalR\client\bin\Debug\Microsoft.AspNet.SignalR.Client.dll
+C:\Users\MINER\source\repos\signalR\client\bin\Debug\Newtonsoft.Json.dll
+C:\Users\MINER\source\repos\signalR\client\bin\Debug\Microsoft.AspNet.SignalR.Client.pdb
+C:\Users\MINER\source\repos\signalR\client\bin\Debug\Microsoft.AspNet.SignalR.Client.xml
+C:\Users\MINER\source\repos\signalR\client\bin\Debug\Newtonsoft.Json.xml
+C:\Users\MINER\source\repos\signalR\client\obj\Debug\client.csprojAssemblyReference.cache
+C:\Users\MINER\source\repos\signalR\client\obj\Debug\client.Form1.resources
+C:\Users\MINER\source\repos\signalR\client\obj\Debug\client.Properties.Resources.resources
+C:\Users\MINER\source\repos\signalR\client\obj\Debug\client.csproj.GenerateResource.cache
+C:\Users\MINER\source\repos\signalR\client\obj\Debug\client.csproj.CoreCompileInputs.cache
+C:\Users\MINER\source\repos\signalR\client\obj\Debug\client.csproj.CopyComplete
+C:\Users\MINER\source\repos\signalR\client\obj\Debug\client.exe
+C:\Users\MINER\source\repos\signalR\client\obj\Debug\client.pdb
